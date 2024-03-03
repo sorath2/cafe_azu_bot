@@ -1,0 +1,721 @@
+[
+{
+  "model": "azucafe.cafe",
+  "pk": 1,
+  "fields": {
+    "name": "Головное",
+    "description": "Просто прелесть",
+    "phone": "+7999999999",
+    "address": "Чистопольская 2 / Декабристов 8",
+    "map_link": "https://yandex.ru/maps/-/CDeCr89T",
+    "picture": "cafe/2023-11-18_21-24-58.png"
+  }
+},
+{
+  "model": "azucafe.cafe",
+  "pk": 2,
+  "fields": {
+    "name": "Отель Европа",
+    "description": "Кафе в отеле Европа",
+    "phone": "+7999999999",
+    "address": "Петербургская 14",
+    "map_link": "https://yandex.ru/maps/-/CDeC72mh",
+    "picture": "cafe/2023-11-18_22-49-19.png"
+  }
+},
+{
+  "model": "azucafe.cafe",
+  "pk": 3,
+  "fields": {
+    "name": "KazanMall",
+    "description": "Кафе в KazanMall",
+    "phone": "+7999999999",
+    "address": "Павлюхина 91",
+    "map_link": "https://yandex.ru/maps/-/CDeGEElY",
+    "picture": "cafe/2023-11-18_23-29-25.png"
+  }
+},
+{
+  "model": "azucafe.cafe",
+  "pk": 4,
+  "fields": {
+    "name": "старый IT Park",
+    "description": "старый IT Park",
+    "phone": "+7999999999",
+    "address": "Петербургская 52",
+    "map_link": "https://yandex.ru/maps/-/CDeGEUKR",
+    "picture": "cafe/2023-11-18_23-32-28.png"
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 1,
+  "fields": {
+    "cafe": 1,
+    "table_number": 1,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 2,
+  "fields": {
+    "cafe": 1,
+    "table_number": 2,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 3,
+  "fields": {
+    "cafe": 1,
+    "table_number": 3,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 4,
+  "fields": {
+    "cafe": 1,
+    "table_number": 4,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 5,
+  "fields": {
+    "cafe": 1,
+    "table_number": 5,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 6,
+  "fields": {
+    "cafe": 1,
+    "table_number": 6,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 7,
+  "fields": {
+    "cafe": 1,
+    "table_number": 7,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 8,
+  "fields": {
+    "cafe": 1,
+    "table_number": 8,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 9,
+  "fields": {
+    "cafe": 1,
+    "table_number": 9,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 10,
+  "fields": {
+    "cafe": 1,
+    "table_number": 10,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 11,
+  "fields": {
+    "cafe": 2,
+    "table_number": 1,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 12,
+  "fields": {
+    "cafe": 2,
+    "table_number": 2,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 13,
+  "fields": {
+    "cafe": 2,
+    "table_number": 3,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 14,
+  "fields": {
+    "cafe": 2,
+    "table_number": 4,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 15,
+  "fields": {
+    "cafe": 2,
+    "table_number": 5,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 16,
+  "fields": {
+    "cafe": 2,
+    "table_number": 6,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 17,
+  "fields": {
+    "cafe": 2,
+    "table_number": 7,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 18,
+  "fields": {
+    "cafe": 2,
+    "table_number": 8,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 19,
+  "fields": {
+    "cafe": 2,
+    "table_number": 9,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 20,
+  "fields": {
+    "cafe": 2,
+    "table_number": 10,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 21,
+  "fields": {
+    "cafe": 2,
+    "table_number": 11,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 22,
+  "fields": {
+    "cafe": 3,
+    "table_number": 1,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 23,
+  "fields": {
+    "cafe": 3,
+    "table_number": 2,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 24,
+  "fields": {
+    "cafe": 3,
+    "table_number": 3,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 25,
+  "fields": {
+    "cafe": 3,
+    "table_number": 4,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 26,
+  "fields": {
+    "cafe": 3,
+    "table_number": 5,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 27,
+  "fields": {
+    "cafe": 3,
+    "table_number": 6,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 28,
+  "fields": {
+    "cafe": 3,
+    "table_number": 7,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 29,
+  "fields": {
+    "cafe": 3,
+    "table_number": 8,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 30,
+  "fields": {
+    "cafe": 3,
+    "table_number": 9,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 31,
+  "fields": {
+    "cafe": 3,
+    "table_number": 10,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 32,
+  "fields": {
+    "cafe": 3,
+    "table_number": 11,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 33,
+  "fields": {
+    "cafe": 3,
+    "table_number": 12,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 34,
+  "fields": {
+    "cafe": 4,
+    "table_number": 1,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 35,
+  "fields": {
+    "cafe": 4,
+    "table_number": 2,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 36,
+  "fields": {
+    "cafe": 4,
+    "table_number": 3,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 37,
+  "fields": {
+    "cafe": 4,
+    "table_number": 4,
+    "seats_count": 1,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 38,
+  "fields": {
+    "cafe": 4,
+    "table_number": 5,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 39,
+  "fields": {
+    "cafe": 4,
+    "table_number": 6,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 40,
+  "fields": {
+    "cafe": 4,
+    "table_number": 7,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 41,
+  "fields": {
+    "cafe": 4,
+    "table_number": 8,
+    "seats_count": 2,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 42,
+  "fields": {
+    "cafe": 4,
+    "table_number": 9,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 43,
+  "fields": {
+    "cafe": 4,
+    "table_number": 10,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 44,
+  "fields": {
+    "cafe": 4,
+    "table_number": 11,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 45,
+  "fields": {
+    "cafe": 4,
+    "table_number": 12,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 46,
+  "fields": {
+    "cafe": 4,
+    "table_number": 13,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 47,
+  "fields": {
+    "cafe": 4,
+    "table_number": 14,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.table",
+  "pk": 48,
+  "fields": {
+    "cafe": 4,
+    "table_number": 15,
+    "seats_count": 4,
+    "available": true,
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.category",
+  "pk": 1,
+  "fields": {
+    "name": "400р",
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.category",
+  "pk": 2,
+  "fields": {
+    "name": "500р",
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.category",
+  "pk": 3,
+  "fields": {
+    "name": "700р",
+    "description": ""
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "Сет № 1",
+    "description": "",
+    "picture": "sets/set_1.png",
+    "cost": 400
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "Сет № 2",
+    "description": "",
+    "picture": "sets/set_2.png",
+    "cost": 400
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "Сет № 3",
+    "description": "",
+    "picture": "sets/set_3.png",
+    "cost": 400
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "Сет № 4",
+    "description": "",
+    "picture": "sets/set_4.png",
+    "cost": 500
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Сет № 5",
+    "description": "",
+    "picture": "sets/set_5.png",
+    "cost": 500
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 6,
+  "fields": {
+    "category": 2,
+    "name": "Сет № 6",
+    "description": "",
+    "picture": "sets/set_6.png",
+    "cost": 500
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Сет № 7",
+    "description": "",
+    "picture": "sets/set_7.png",
+    "cost": 700
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 8,
+  "fields": {
+    "category": 3,
+    "name": "Сет № 8",
+    "description": "",
+    "picture": "sets/set_8.png",
+    "cost": 700
+  }
+},
+{
+  "model": "azucafe.set",
+  "pk": 9,
+  "fields": {
+    "category": 3,
+    "name": "Сет № 9",
+    "description": "",
+    "picture": "sets/set_9.png",
+    "cost": 700
+  }
+},
+{
+  "model": "azucafe.user",
+  "pk": 3,
+  "fields": {
+    "telegram_id": "1",
+    "name": "test",
+    "admin": false,
+    "superuser": false
+  }
+},
+{
+  "model": "azucafe.user",
+  "pk": 4,
+  "fields": {
+    "telegram_id": "12123123123",
+    "name": "test admin",
+    "admin": true,
+    "superuser": false
+  }
+}
+]

@@ -1,0 +1,6 @@
+Dockerfile
+db.sqlite3
+venv
+.venv
+.env
+media

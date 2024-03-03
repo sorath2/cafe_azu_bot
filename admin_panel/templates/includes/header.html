@@ -1,0 +1,19 @@
+{% load static %}
+<nav class="navbar navbar-light" id="background-color-header">
+  <div class="container">
+    <div class="links-container">
+      <a href="{% url 'azucafe:login' %}" class="admin-info">
+        <div class="admin-panel-text text-white">Кафе АЗУ</div>
+      </a>
+      <hr class="my-2 border-white" style="width: 100%; margin: 0 auto;">
+      <a href="{% url 'azucafe:cafe_list' %}" class="admin-info">
+        <div class="admin-panel-text text-white">Панель администратора</div>
+      </a>
+    </div>
+    {% if user.is_authenticated %}
+      <div class="logout-button-wrapper" style="background-color: rgba(220, 81, 50, 1); border-radius: 10px; padding: 5px 3px;">
+        <a class="nav-link link-light" href="{% url 'azucafe:logout' %}">Выйти</a>
+      </div>
+    {% endif %}
+  </div>
+</nav>

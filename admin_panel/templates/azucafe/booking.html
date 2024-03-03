@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+                <form method="post"
+                      action="
+                      {% if is_edit %}
+                        {% url 'azucafe:booking_update' order_id=order_id %}
+                      {% else %}
+                        {% url 'azucafe:booking_create' %}
+                      {% endif %}"
+                      class="text-center">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 10px;">
+                        <legend style="padding: 0 10px; background-color: #357169; color: white; border-radius: 10px;">Выберите ресторан</legend>
+                        <select name="selected_cafe" style="width: 100%; border: none;">
+                            {% for cafe in cafes %}
+                            <option
+                                    value="{{ cafe.id }}"
+                                    {% if cafe.id == selected_cafe_id %}selected
+                                    {% endif %}>
+                                {{ cafe.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                      <legend style="padding: 0 10px; background-color: #357169; color: white; border-radius: 10px;">Выберите дату и время</legend>
+                      <input type="date" style="width: 100%; border: none;" name="date" value="{{ date }}"
+                          min="{{ start_date }}" max="{{ end_date }}">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                      <legend style="padding: 0 10px; background-color: #357169; color: white; border-radius: 10px;">Введите имя гостя</legend>
+                      <input type="text" style="width: 100%; border: none;" value="{{ guest_name }}"
+                               name="guest_name" placeholder="Имя гостя">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                      <legend style="padding: 0 10px; background-color: #357169; color: white; border-radius: 10px;">Введите номер телефона</legend>
+                      <input type="tel" style="width: 100%; border: none;" value="{{ guest_phone }}"
+                               name="guest_phone" placeholder="Номер телефона в формате +79005552233">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <legend style="padding: 0 10px; background-color: #357169; color: white; border-radius: 10px;">Сеты</legend>
+                        <div style="display: flex; justify-content: flex-end; margin-top: 5px; margin-bottom: 5px;">
+                            <span style="font-weight: bold;">Количество</span>
+                        </div>
+                        {% for set_id, menu_data in menus.items %}
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                <span style="font-weight: bold;">{{ menu_data.name }}</span>
+                                <input type="number" style="border: none; width: 15%; text-align: right;" name="quantity_{{ set_id }}" value="{{ menu_data.quantity }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <div style="margin-right: 10px; font-weight: bold; text-align: left; margin-bottom: 5px;">Комментарий</div>
+                        <div>
+                            <textarea name="description" style="width: 100%; border: none;" placeholder="Введите комментарий">{{ description|linebreaksbr }}</textarea>
+                        </div>
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 0 10px; background-color: #903834; color: white; border-radius: 10px; border: none; height: 35px;">
+                        {% if is_edit %}
+                        Изменить бронирование
+                        {% else %}
+                        Забронировать стол
+                        {% endif %}
+                    </button>
+                </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+  <main>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 p-5">
+          {% if user.is_authenticated %}
+            <div class="alert alert-info" role="alert" style="text-align: center;">
+              <p class="m-1">Вы уже авторизованы на сайте</p>
+              <p class="m-1">Для выбора кафе нажмите <a href="{% url 'azucafe:cafe_list' %}">сюда</a></p>
+            </div>
+          {% else %}
+            <div style="text-align: center; background-color: white; color: #357169; font-weight: bold; font-size: 500%; margin-bottom: 10px;" >              
+              AZU
+            </div>
+                {% if form.errors %}
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      <div class="alert alert-danger">
+                        {{ error|escape }}
+                      </div>
+                    {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                      {{ error|escape }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+                <form method="post" action="{% url 'azucafe:login' %}">
+                  {% csrf_token %}
+                  <div style="margin-bottom: 10px;">
+                    <div style="margin-right: 10px; font-weight: bold; text-align: left; margin-bottom: 5px;">Username</div>
+                    <input type="text" name="username" autofocus class="form-control" required id="id_username">
+                  </div>
+                  <div style="margin-bottom: 10px;">
+                    <div style="margin-right: 10px; font-weight: bold; text-align: left; margin-bottom: 5px;">Password</div>
+                    <input type="password" name="password" class="form-control" required id="id_password">
+                  </div>
+                  <button type="submit" style="width: 50%; padding: 0 10px; background-color: #3472df; color: white; border-radius: 10px; border: none; height: 35px;">
+                    Вход
+                  </button>
+                </form>
+              </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

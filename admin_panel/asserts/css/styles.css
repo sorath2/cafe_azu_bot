@@ -1,0 +1,44 @@
+:root {
+  --main-bg-color: rgba(205, 219, 217, 1);
+  --custom-bg-color: rgba(5, 75, 67, 0.75);
+}
+
+#background-color-header {
+  background-color: rgba(5, 75, 67, 1);
+}
+
+#background-color {
+  background-color: var(--main-bg-color);
+}
+
+.bg-inform {
+  background-color: var(--custom-bg-color);
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ddd;
+  margin-bottom: -1px;
+  text-align: center;
+}
+
+div[id^="content"] {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2 {
+  display: block;
+}

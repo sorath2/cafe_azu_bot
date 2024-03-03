@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "admin-panel"
+version = "0.1.0"
+description = "Admin panel for AZUCafe telegram bot"
+authors = ["Роман Александров <rsaleksandrov@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+django = "^4.2.7"
+python-dotenv = "^1.0.0"
+psycopg2-binary = "2.9.5"
+gunicorn = "^21.2.0"
+pillow = "^10.1.0"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
