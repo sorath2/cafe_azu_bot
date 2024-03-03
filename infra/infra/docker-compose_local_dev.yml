@@ -1,0 +1,51 @@
+version: "3.9"
+name: "azucafebot-infra"
+services:
+  postgres:
+    image: postgres:15.4-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./config/.general
+    volumes:
+      - data_value:/var/lib/postgresql/data/
+
+  django:
+    build: ../admin_panel
+    restart: no
+    depends_on:
+      - postgres
+    volumes:
+      - static_value:/app/static/
+      - media_value:/app/media/
+    env_file:
+      - ./config/.general
+
+  telegram_bot:
+    build: ../bot
+    restart: no
+    depends_on:
+      - postgres
+    volumes:
+      - media_value:/app/media/
+    env_file:
+      - ./config/.general
+
+
+  nginx:
+    image: nginx:1.19.3
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./config/index.html:/usr/share/nginx/html/index.html
+      - static_value:/var/html/static/
+      - media_value:/var/html/media/
+    depends_on:
+      - django
+
+
+volumes:
+  data_value:
+  static_value:
+  media_value:

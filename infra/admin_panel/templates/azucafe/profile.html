@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <script>
+            window.onload = function() {
+                localStorage.clear();
+            };
+        </script>
+        <div class="text-center">
+            <h2>Выберите кафе</h2>
+            <div>
+                <ul class="list-group">
+                    {% for cafe in cafes %}
+                        <li class="list-group-item" id="background-color">
+                            <a class="list-group list-group-flush font-weight-bold" href="{% url 'azucafe:cafe_detail' cafe.id %}">{{ cafe.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <a class="btn btn-primary mt-3" href="{% url 'azucafe:booking_create' %}">Забронировать стол</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

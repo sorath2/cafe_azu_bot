@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="form-group d-flex justify-content-end mt-2">
+        <button class="btn btn-success" name="btn_reload" id="btn_reload">
+            Обновить
+        </button>
+    </div>
+    <div class="form-group">
+        <label for="cafe">Выберите кафе:</label>
+        <select class="form-control" id="cafe" name="cafe">
+            {% for cafe in cafes %}
+                <option value="{{ cafe.id }}" {% if cafe.id == cafe_id %}selected{% endif %}>{{ cafe.name }}</option>
+            {% endfor %}
+        </select>             
+    </div>
+    <div class="form-group">
+        <label for="date">Выберите дату:</label>
+        <input type="date" class="form-control" id="date" name="date" required min="2024-03-11" max="2024-04-10" value="{{ default_date }}">
+    </div>
+    <div>
+        <a class="btn btn-primary mt-3" href="{% url 'azucafe:booking_create' %}">Забронировать стол</a>
+    </div>
+    <div class="container mt-5">
+        <ul class="nav nav-tabs justify-content-center" id="myTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="general-info-tab" data-toggle="tab" href="#general-info">Общая информация</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="reservations-tab" data-toggle="tab" href="#reservations">Бронирования</a>
+            </li>
+        </ul>
+        <div class="tab-content mt-2">
+            <div class="tab-pane fade show active" id="general-info">
+                <div style="text-align: center; padding: 20px;">
+                    <div class="p-3 mb-2 bg-success text-white rounded">ПОСАДОЧНЫЕ МЕСТА</div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p><b>Всего мест: </b><span id="total_seats">{{ total_seats }}</span></p>
+                            <p><b>Свободных мест: </b><span id="available_seats">{{ available_seats }}</span></p>
+                        </div>
+                    </div>
+                    <div class="p-3 mb-2 bg-success text-white rounded">ЗАКАЗАННЫЕ СЕТЫ</div>
+                    <div class="container">
+                        <table class="table" style="border-radius: 10px; overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th>Сет</th>
+                                    <th>Количество</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sets-table-body">
+                                {% for set_data in ordered_sets %}
+                                    <tr>
+                                        <td>{{ set_data.set_name }}</td>
+                                        <td>{{ set_data.quantity }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="reservations">
+                <div style="text-align: center; padding: 20px;">
+                    <div class="p-3 mb-2 bg-success text-white rounded">БРОНИРОВАНИЯ</div>
+                    <div style="text-align: left;" id="reservations-table">
+                        {% for reservation in reservations %}
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Сет</th>
+                                                <th>Количество</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for set_data in reservation.sets %}
+                                                <tr>
+                                                    <td>{{ set_data.set__name }}</td>
+                                                    <td>{{ set_data.quantity }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Подключение необходимых скриптов Bootstrap и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        $(document).ready(function() {
+            var savedCafeId = localStorage.getItem('selectedCafeId');
+            var savedDate = localStorage.getItem('selectedDate');
+
+            if (savedCafeId !== null) {
+                if (savedCafeId == $('#cafe').val()){
+                    $('#cafe').val(savedCafeId);
+                }
+            }
+
+            if (savedDate !== null) {
+                if (savedDate == $('#date').val()){
+                    $('#date').val(savedDate);
+                }
+            }
+            updateSeats($('#cafe').val(), $('#date').val());
+
+            // Инициализация табов Bootstrap
+            $('#myTabs a').on('click', function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+            var activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                $('#myTabs a[href="' + activeTab + '"]').tab('show');
+            }
+
+            $('#myTabs a').on('shown.bs.tab', function (e) {
+                var activeTab = $(e.target).attr('href');
+                localStorage.setItem('activeTab', activeTab);
+            });
+
+            // Загрузка данных без обновления страницы
+            $('#cafe').on('change', function() {
+                var newCafeId = $(this).val();
+                var selectedDate = $('#date').val();
+                updateSeats(newCafeId, selectedDate);
+            });
+
+            $('#date').on('change', function() {
+                var newCafeId = $('#cafe').val();
+                var selectedDate = $(this).val();
+                updateSeats(newCafeId, selectedDate);
+            });
+            
+            $('#btn_reload').on('click', function() {
+                var newCafeId = $('#cafe').val();
+                var selectedDate = $('#date').val();
+                console.log('Reload');
+                updateSeats(newCafeId, selectedDate);
+            });
+
+            function updateSeats(newCafeId, selectedDate) {
+                $.ajax({
+                    url: '/azucafe/cafe_seats/' + newCafeId + '/',
+                    method: 'GET',
+                    data: {'date': selectedDate},
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#total_seats').text(data.total_seats);
+                        $('#available_seats').text(data.available_seats);
+                        localStorage.setItem('selectedCafeId', newCafeId);
+                        localStorage.setItem('selectedDate', selectedDate);
+                        var setsTableBody = $('#sets-table-body');
+                        setsTableBody.empty();
+                        $.each(data.ordered_sets, function(index, set_data) {
+                            setsTableBody.append('<tr><td>' + set_data.set__name + '</td><td>' + set_data.quantity + '</td></tr>');
+                        });
+                        updateReservationsTable(data.reservations);
+                    }
+                });
+            }
+
+            function updateReservationsTable(reservations) {
+                var reservationsCards = $('#reservations-table');
+                reservationsCards.empty();
+
+                if (reservations.length > 0) {
+                    $.each(reservations, function (index, reservation) {
+                        var cardHtml = '<div class="col-md-4 mb-3">' +
+                                            '<div class="card">' +
+                                                '<div class="card-body d-flex justify-content-between align-items-center">' +
+                                                    '<h5 class="card-title">Бронирование №' + reservation.id + '</h5>' +
+                                                '<div>' +
+                                                    '<a href="/azucafe/cancel_reservation/' + reservation.id + '/" class="btn btn-danger" style="margin-right: 5px;" onclick="return confirm(\'Отменить бронирование №' + reservation.id + '?\')"><i class="bi bi-trash3"></i></a>' +
+                                                    '<a href="/azucafe/booking/' + reservation.id + '/edit/" class="btn btn-warning ml-2"><i class="bi bi-pencil-fill"></i></a>' +
+                                                '</div>' +
+                                            '</div>' +
+                                                '<p style="padding-left: 20px;" class="card-title"><strong>Имя:</strong> ' + reservation.buyer__name + '</p>' +
+                                                '<p style="padding-left: 20px;" class="card-title"><strong>Номер телефона:</strong> ' + reservation.buyer__phone_number + '</p>' +
+                                                '<p style="padding-left: 20px;" class="card-title"><strong>Количество гостей:</strong> ' + reservation.guests + '</p>' +
+                                                '<p style="padding-left: 20px;" class="card-title"> ' + (reservation.is_paid ? '<strong class="text-success">Оплачено</strong>' : '<strong class="text-danger">Не оплачено</strong>') + '</p>' +
+                                                '<p style="padding-left: 20px;" class="card-title"><strong>Забронировано</strong> ' + (reservation.admin_booking ? 'АДМИНИСТАТОРОМ': 'КЛИЕНТОМ') +
+                                                '<table class="table">' +
+                                                    '<thead>' +
+                                                        '<tr>' +
+                                                            '<th class="text-center">Сет</th>' +
+                                                            '<th class="text-center">Количество</th>' +
+                                                        '</tr>' +
+                                                    '</thead>' +
+                                            '<tbody>';
+                        $.each(reservation.sets, function (setIndex, set_data) {
+                            cardHtml += '<tr><td class="text-center">' + set_data.set__name + '</td><td class="text-center">' + set_data.quantity + '</td></tr>';
+                        });
+                        cardHtml += '</tbody></table></div></div></div>';
+                        reservationsCards.append(cardHtml);
+                    });
+                } else {
+                    reservationsCards.html('<p style="text-align: center;">Бронирования отсутствуют</p>');
+                }
+            }
+        });
+    </script>
+{% endblock %}

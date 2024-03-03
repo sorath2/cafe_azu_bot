@@ -1,0 +1,16 @@
+<div class="mt-4">
+    <h3>Детали заказа</h3>
+    <p>Номер бронирования: <span class="fw-bold">{{ order.id }}</span></p>
+    <p>Кафе: <span class="fw-bold">{{ order.cafe.name }}</span> ({{ order.cafe.address }})</p>
+    <p>Дата: <span class="fw-bold">{{ order.from_date|date:"d.m.Y (l)" }}</span></p>
+    <p>Состав заказа:</p>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-11">
+            {% for menu in order.menu_set.all %}
+                <p>{{ menu.set.name }} - {{ menu.quantity }} шт.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>

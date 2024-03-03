@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Выход из системы{% endblock %}
+{% block content %}
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div style="font-weight: bold; text-align: center; margin-bottom: 150px;">Вы вышли из системы</div>
+                <a href="{% url 'azucafe:index' %}" class="btn btn-primary" style="width: 80vw; font-weight: bold; text-align: center; background-color: #903834; color: white; border: none;">На главную</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+{% endblock %}
